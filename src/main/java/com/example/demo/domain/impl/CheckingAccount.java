@@ -87,8 +87,8 @@ public class CheckingAccount implements Account {
     }
 
     private boolean isTheSameLongFields(CheckingAccount account){
-        return number == account.number
-                && agency == account.agency;
+        return Objects.equals(number, account.number)
+                && Objects.equals(agency, account.agency);
     }
 
     private boolean isTheSameStringFields(CheckingAccount account){

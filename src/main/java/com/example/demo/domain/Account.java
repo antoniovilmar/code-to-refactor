@@ -1,9 +1,5 @@
 package com.example.demo.domain;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
 
 public interface Account {
     long getNumber();

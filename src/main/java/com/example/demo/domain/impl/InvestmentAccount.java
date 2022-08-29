@@ -3,6 +3,7 @@ package com.example.demo.domain.impl;
 import com.example.demo.domain.Account;
 import com.example.demo.domain.Dependent;
 import com.example.demo.domain.exception.DomainBusinessException;
+import com.example.demo.domain.util.AccountUtil;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -57,10 +58,11 @@ public class InvestmentAccount implements Account {
     @Override
     public boolean equals(Object o) {
         if (o instanceof CheckingAccount) {
-            InvestmentAccount account = (InvestmentAccount) o;
-            return number == account.number
-                    && agency == account.agency
-                    && Objects.equals(holderCPF, account.holderCPF);
+            InvestmentAccount accountToCompare = (InvestmentAccount) o;
+            InvestmentAccount thisAccount =
+                    new InvestmentAccount(holderCPF, number, agency);
+
+            return AccountUtil.isTheSameFields(accountToCompare, thisAccount);
         }
         return false;
 
@@ -70,4 +72,13 @@ public class InvestmentAccount implements Account {
     public int hashCode() {
         return Objects.hash(number, agency, holderCPF);
     }
+
+   /* private boolean isTheSameLongFields(InvestmentAccount account){
+        return number == account.number
+                && agency == account.agency;
+    }
+
+    private boolean isTheSameStringFields(InvestmentAccount account){
+        return Objects.equals(holderCPF, account.holderCPF);
+    }*/
 }
