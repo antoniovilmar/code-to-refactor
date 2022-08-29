@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.demo.application.ContaServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-11T16:39:23" hostname="dbs-note-806" time="0.406">
+<testsuite name="com.example.demo.application.ContaServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-08-02T19:55:28" hostname="jessica-Latitude-3410" time="1.255">
   <properties/>
-  <testcase name="Deve abrir conta corrente" classname="com.example.demo.application.ContaServiceTest" time="0.406"/>
+  <testcase name="Deve abrir conta corrente" classname="com.example.demo.application.ContaServiceTest" time="1.255"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
