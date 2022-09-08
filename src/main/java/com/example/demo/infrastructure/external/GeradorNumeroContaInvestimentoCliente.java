@@ -4,8 +4,8 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @FeignClient(name = "geradorNumeroInvestimento", url = "https://conta-investimento-numero")
-public interface CostumerInvestmentAccountNumberGenerator {
+public interface GeradorNumeroContaInvestimentoCliente {
 
     @PostMapping("/geracao")
-     long generate(String cpf);
+    long generate(String cpf);
 }

@@ -5,24 +5,24 @@ import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
-public class Dependent {
+public class Dependente {
     @Id
-    private String CPF;
+    private String cpf;
     private String phone;
 
-    public Dependent() {
+    public Dependente() {
     }
 
-    public Dependent(String CPF, String phone) {
-        this.CPF = CPF;
+    public Dependente(String cpf, String phone) {
+        this.cpf = cpf;
         this.phone = phone;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof Dependent) {
-            Dependent that = (Dependent) o;
-            return Objects.equals(CPF, that.CPF) && Objects.equals(phone, that.phone);
+        if (o instanceof Dependente) {
+            Dependente that = (Dependente) o;
+            return Objects.equals(cpf, that.cpf) && Objects.equals(phone, that.phone);
         }else {
             return false;
         }
@@ -30,6 +30,6 @@ public class Dependent {
 
     @Override
     public int hashCode() {
-        return Objects.hash(CPF, phone);
+        return Objects.hash(cpf, phone);
     }
 }

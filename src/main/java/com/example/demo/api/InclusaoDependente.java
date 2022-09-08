@@ -1,10 +1,10 @@
 package com.example.demo.api;
 
-public class DependentDataInclusion {
+public class InclusaoDependente {
     private String cpf;
     private String telefone;
 
-    public DependentDataInclusion(String cpf, String telefone) {
+    public InclusaoDependente(String cpf, String telefone) {
         this.cpf = cpf;
         this.telefone = telefone;
     }

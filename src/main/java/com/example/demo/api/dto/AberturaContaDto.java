@@ -2,13 +2,13 @@ package com.example.demo.api.dto;
 
 import com.example.demo.domain.AccountType;
 
-public class AccountOpeningDto {
+public class AberturaContaDto {
     private long agency;
     private String holderCPF;
     private AccountType accountType;
 
 
-    public AccountOpeningDto(long agency, String holderCPF) {
+    public AberturaContaDto(long agency, String holderCPF) {
         this.agency = agency;
         this.holderCPF = holderCPF;
     }
