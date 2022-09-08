@@ -2,7 +2,7 @@ package com.example.demo.domain.strategy;
 
 import com.example.demo.domain.Conta;
 import com.example.demo.domain.AccountType;
-import com.example.demo.domain.impl.ContaPoupança;
+import com.example.demo.domain.impl.ContaPoupanca;
 
 public class SavingsAccountCreationStrategy implements AccountCreationStrategy {
     @Override
@@ -12,6 +12,6 @@ public class SavingsAccountCreationStrategy implements AccountCreationStrategy {
 
     @Override
     public Conta create(long number, long agency, String holderCPF) {
-        return new ContaPoupança(number, agency, holderCPF);
+        return new ContaPoupanca(number, agency, holderCPF);
     }
 }

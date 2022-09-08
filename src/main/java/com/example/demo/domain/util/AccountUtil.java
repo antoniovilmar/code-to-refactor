@@ -5,6 +5,8 @@ import com.example.demo.domain.Conta;
 import java.util.Objects;
 
 public class AccountUtil {
+    private AccountUtil() {}
+
     public static boolean isTheSameFields(Conta contaToCompare, Conta thisConta){
         return Objects.equals(contaToCompare.getNumber(), thisConta.getNumber())
                 && Objects.equals(contaToCompare.getAgency(), thisConta.getAgency())

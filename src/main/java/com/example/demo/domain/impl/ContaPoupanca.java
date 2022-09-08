@@ -9,11 +9,11 @@ import javax.persistence.*;
 import java.util.Objects;
 
 
-public class ContaPoupança extends Conta {
+public class ContaPoupanca extends Conta {
     @Transient
     private static final double ZERO = 0;
 
-    public ContaPoupança(long number, long agency, String holderCPF) {
+    public ContaPoupanca(long number, long agency, String holderCPF) {
         super(number, agency, holderCPF);
     }
 
@@ -36,10 +36,10 @@ public class ContaPoupança extends Conta {
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof ContaCorrente) {
-            ContaPoupança accountToCompare = (ContaPoupança) o;
-            ContaPoupança thisAccount =
-                    new ContaPoupança(getNumber(), getAgency(), getHolderCPF());
+        if (o instanceof ContaPoupanca) {
+            ContaPoupanca accountToCompare = (ContaPoupanca) o;
+            ContaPoupanca thisAccount =
+                    new ContaPoupanca(getNumber(), getAgency(), getHolderCPF());
 
             return AccountUtil.isTheSameFields(accountToCompare, thisAccount);
         }

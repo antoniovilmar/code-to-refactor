@@ -26,7 +26,7 @@ public class ContaInvestimento extends Conta {
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof ContaCorrente) {
+        if (o instanceof ContaInvestimento) {
             ContaInvestimento accountToCompare = (ContaInvestimento) o;
             ContaInvestimento thisAccount =
                     new ContaInvestimento(getNumber(), getAgency(), getHolderCPF());
