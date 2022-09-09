@@ -8,21 +8,21 @@ import java.util.Objects;
 public class Dependente {
     @Id
     private String cpf;
-    private String phone;
+    private String telefone;
 
     public Dependente() {
     }
 
-    public Dependente(String cpf, String phone) {
+    public Dependente(String cpf, String telefone) {
         this.cpf = cpf;
-        this.phone = phone;
+        this.telefone = telefone;
     }
 
     @Override
     public boolean equals(Object o) {
         if (o instanceof Dependente) {
             Dependente that = (Dependente) o;
-            return Objects.equals(cpf, that.cpf) && Objects.equals(phone, that.phone);
+            return Objects.equals(cpf, that.cpf) && Objects.equals(telefone, that.telefone);
         }else {
             return false;
         }
@@ -30,6 +30,6 @@ public class Dependente {
 
     @Override
     public int hashCode() {
-        return Objects.hash(cpf, phone);
+        return Objects.hash(cpf, telefone);
     }
 }

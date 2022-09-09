@@ -1,8 +1,7 @@
 package com.example.demo.domain.impl;
 
-import com.example.demo.domain.Conta;
-import com.example.demo.domain.Dependente;
-import com.example.demo.domain.exception.DomainBusinessException;
+import com.example.demo.domain.*;
+import com.example.demo.domain.exception.DominioException;
 import com.example.demo.domain.util.AccountUtil;
 
 import javax.persistence.*;
@@ -11,7 +10,7 @@ import java.util.Objects;
 import java.util.Set;
 
 
-public class ContaCorrente extends Conta {
+public class ContaCorrente extends Conta implements Deposita, Saque, IncluiDependente {
     @OneToMany
     private Set<Dependente> dependentes;
     @Transient
@@ -21,23 +20,26 @@ public class ContaCorrente extends Conta {
     //set
 
     public ContaCorrente(long number, long agency, String holderCPF) {
-        super(number, agency, holderCPF);
+        super(number, agency, holderCPF, TipoConta.CORRENTE);
         dependentes = new HashSet<>();
     }
 
-    public void deposit(final double valor) {
+    @Override
+    public void depositar(final double valor) {
         setBalance(getBalance() + valor);
     }
 
-    public void withdraw(double valor) {
+    @Override
+    public void sacar(double valor) {
         double newBalance = getBalance() - valor;
         if (newBalance < SPECIAL_CHECK_LIMIT) {
-            throw new DomainBusinessException("Saldo insuficiente");
+            throw new DominioException("Saldo insuficiente");
         }
         setBalance(newBalance);
     }
 
-    public void includeDependent(final Dependente dependente) {
+    @Override
+    public void incluirDependente(final Dependente dependente) {
         this.dependentes.add(dependente);
     }
 
@@ -47,7 +49,7 @@ public class ContaCorrente extends Conta {
         if (o instanceof ContaCorrente) {
             ContaCorrente accountToCompare = (ContaCorrente) o;
             ContaCorrente thisAccount =
-                    new ContaCorrente(getNumber(), getAgency(), getHolderCPF());
+                    new ContaCorrente(getNumero(), getAgencia(), getCpfTitular());
 
             return AccountUtil.isTheSameFields(accountToCompare, thisAccount);
         }
@@ -58,7 +60,7 @@ public class ContaCorrente extends Conta {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getNumber(), getAgency(), getHolderCPF());
+        return Objects.hash(getNumero(), getAgencia(), getCpfTitular());
     }
 
 }

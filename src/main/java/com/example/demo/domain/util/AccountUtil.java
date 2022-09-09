@@ -8,8 +8,8 @@ public class AccountUtil {
     private AccountUtil() {}
 
     public static boolean isTheSameFields(Conta contaToCompare, Conta thisConta){
-        return Objects.equals(contaToCompare.getNumber(), thisConta.getNumber())
-                && Objects.equals(contaToCompare.getAgency(), thisConta.getAgency())
-                && Objects.equals(contaToCompare.getHolderCPF(), thisConta.getHolderCPF());
+        return Objects.equals(contaToCompare.getNumero(), thisConta.getNumero())
+                && Objects.equals(contaToCompare.getAgencia(), thisConta.getAgencia())
+                && Objects.equals(contaToCompare.getCpfTitular(), thisConta.getCpfTitular());
     }
 }

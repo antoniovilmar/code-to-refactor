@@ -1,13 +1,13 @@
 package com.example.demo.domain.strategy;
 
 import com.example.demo.domain.Conta;
-import com.example.demo.domain.AccountType;
+import com.example.demo.domain.TipoConta;
 import com.example.demo.domain.impl.ContaCorrente;
 
-public class CheckingAccountCreationStrategy implements AccountCreationStrategy {
+public class CriacaoContaCorrenteStrategy implements CriacaoContaStrategy {
     @Override
-    public Boolean ifAccountType(AccountType accountType) {
-        return accountType.equals(AccountType.CHECKING);
+    public Boolean ifAccountType(TipoConta tipoConta) {
+        return tipoConta.equals(TipoConta.CORRENTE);
     }
 
     @Override

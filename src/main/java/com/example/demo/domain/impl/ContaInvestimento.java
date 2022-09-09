@@ -1,27 +1,18 @@
 package com.example.demo.domain.impl;
 
-import com.example.demo.domain.Conta;
-import com.example.demo.domain.Dependente;
-import com.example.demo.domain.exception.DomainBusinessException;
+import com.example.demo.domain.*;
 import com.example.demo.domain.util.AccountUtil;
 import java.util.Objects;
 
-public class ContaInvestimento extends Conta {
+public class ContaInvestimento extends Conta implements Deposita {
 
     public ContaInvestimento(long number, long agency, String holderCPF) {
-        super(number, agency, holderCPF);
+        super(number, agency, holderCPF, TipoConta.INVESTIMENTO);
     }
 
-    public void deposit(final double valor) {
+    @Override
+    public void depositar(final double valor) {
         setBalance(getBalance() + valor);
-    }
-
-    public void withdraw(double value) {
-        throw new DomainBusinessException("Conta de Investimento não pode sacar, somente transferir");
-    }
-
-    public void includeDependent(final Dependente dependente) {
-        throw new DomainBusinessException("Conta de Investimento não pode ter dependentes");
     }
 
     @Override
@@ -29,7 +20,7 @@ public class ContaInvestimento extends Conta {
         if (o instanceof ContaInvestimento) {
             ContaInvestimento accountToCompare = (ContaInvestimento) o;
             ContaInvestimento thisAccount =
-                    new ContaInvestimento(getNumber(), getAgency(), getHolderCPF());
+                    new ContaInvestimento(getNumero(), getAgencia(), getCpfTitular());
 
             return AccountUtil.isTheSameFields(accountToCompare, thisAccount);
         }
@@ -39,7 +30,7 @@ public class ContaInvestimento extends Conta {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getNumber(), getAgency(), getHolderCPF());
+        return Objects.hash(getNumero(), getAgencia(), getCpfTitular());
     }
 
 }

@@ -2,10 +2,10 @@ package com.example.demo.application;
 
 import com.example.demo.api.dto.AberturaContaDto;
 import com.example.demo.application.impl.ContaServiceImpl;
-import com.example.demo.domain.AccountType;
+import com.example.demo.domain.TipoConta;
 import com.example.demo.domain.impl.ContaCorrente;
-import com.example.demo.domain.strategy.AccountCreationStrategy;
-import com.example.demo.infrastructure.AccountRepository;
+import com.example.demo.domain.strategy.CriacaoContaStrategy;
+import com.example.demo.infrastructure.ContaRepository;
 import com.example.demo.infrastructure.external.GeradorNumeroContaCliente;
 import com.example.demo.infrastructure.external.GeradorNumeroContaInvestimentoCliente;
 import org.junit.jupiter.api.Assertions;
@@ -22,21 +22,21 @@ import static org.mockito.Mockito.*;
 class ContaServiceTest {
 
     private ContaService contaService;
-    private AccountRepository accountRepository;
-    private AccountCreationStrategy accountCreationOne;
-    private AccountCreationStrategy accountCreationTwo;
-    private AccountCreationStrategy accountCreationThree;
+    private ContaRepository contaRepository;
+    private CriacaoContaStrategy accountCreationOne;
+    private CriacaoContaStrategy accountCreationTwo;
+    private CriacaoContaStrategy accountCreationThree;
     private GeradorNumeroContaCliente geradorNumeroContaCliente;
     private GeradorNumeroContaInvestimentoCliente geradorNumeroContaInvestimentoCliente;
 
     @BeforeEach
     public void init() {
-        accountRepository = mock(AccountRepository.class);
+        contaRepository = mock(ContaRepository.class);
 
-        accountCreationOne = mock(AccountCreationStrategy.class);
-        accountCreationTwo = mock(AccountCreationStrategy.class);
+        accountCreationOne = mock(CriacaoContaStrategy.class);
+        accountCreationTwo = mock(CriacaoContaStrategy.class);
 
-        List<AccountCreationStrategy> accountsCreation = new ArrayList<>();
+        List<CriacaoContaStrategy> accountsCreation = new ArrayList<>();
         accountsCreation.add(accountCreationOne);
         accountsCreation.add(accountCreationTwo);
 
@@ -44,7 +44,7 @@ class ContaServiceTest {
         geradorNumeroContaInvestimentoCliente = mock(GeradorNumeroContaInvestimentoCliente.class);
 
 
-        contaService = new ContaServiceImpl(accountRepository,
+        contaService = new ContaServiceImpl(contaRepository,
                 accountsCreation,
                 geradorNumeroContaCliente,
                 geradorNumeroContaInvestimentoCliente);
@@ -60,13 +60,13 @@ class ContaServiceTest {
 
         var contaEsperada = new ContaCorrente(numeroConta,agencia, cpfTitular);
         AberturaContaDto dadosAberturaConta = new AberturaContaDto(agencia,cpfTitular);
-        dadosAberturaConta.setAccountType(AccountType.CHECKING);
+        dadosAberturaConta.setAccountType(TipoConta.CORRENTE);
         var contaCriada = new ContaCorrente(numeroConta,agencia, cpfTitular);
 
         when(geradorNumeroContaCliente.generate()).thenReturn(numeroConta);
-        when(accountCreationOne.ifAccountType(AccountType.CHECKING)).thenReturn(true);
+        when(accountCreationOne.ifAccountType(TipoConta.CORRENTE)).thenReturn(true);
         when(accountCreationOne.create(numeroConta, agencia, cpfTitular)).thenReturn(contaEsperada);
-        when(accountRepository.save(contaEsperada)).thenReturn(contaCriada);
+        when(contaRepository.save(contaEsperada)).thenReturn(contaCriada);
 
 
         long numeroContaCriada = contaService.openAccount(dadosAberturaConta);

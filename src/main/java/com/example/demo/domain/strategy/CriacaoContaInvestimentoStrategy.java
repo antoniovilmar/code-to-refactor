@@ -1,13 +1,13 @@
 package com.example.demo.domain.strategy;
 
 import com.example.demo.domain.Conta;
-import com.example.demo.domain.AccountType;
+import com.example.demo.domain.TipoConta;
 import com.example.demo.domain.impl.ContaInvestimento;
 
-public class InvestmentAccountCreationStrategy implements AccountCreationStrategy {
+public class CriacaoContaInvestimentoStrategy implements CriacaoContaStrategy {
     @Override
-    public Boolean ifAccountType(AccountType accountType) {
-        return accountType.equals(AccountType.SAVINGS);
+    public Boolean ifAccountType(TipoConta tipoConta) {
+        return tipoConta.equals(TipoConta.POUPANCA);
     }
 
     @Override

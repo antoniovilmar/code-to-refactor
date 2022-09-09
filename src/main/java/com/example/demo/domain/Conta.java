@@ -2,29 +2,31 @@ package com.example.demo.domain;
 
 import javax.persistence.Id;
 
-public abstract class Conta implements ContaBase {
+public abstract class Conta {
     @Id
-    private long number;
-    private long agency;
-    private String holderCPF;
+    private long numero;
+    private long agencia;
+    private String cpfTitular;
     private double balance;
+    private TipoConta tipoConta;
 
-    protected Conta(long number, long agency, String holderCPF) {
-        this.number = number;
-        this.agency = agency;
-        this.holderCPF = holderCPF;
+    protected Conta(long numero, long agencia, String cpfTitular, TipoConta tipoConta) {
+        this.numero = numero;
+        this.agencia = agencia;
+        this.cpfTitular = cpfTitular;
+        this.tipoConta = tipoConta;
     }
 
-    public long getNumber() {
-        return number;
+    public long getNumero() {
+        return numero;
     }
 
-    public long getAgency() {
-        return agency;
+    public long getAgencia() {
+        return agencia;
     }
 
-    public String getHolderCPF() {
-        return holderCPF;
+    public String getCpfTitular() {
+        return cpfTitular;
     }
 
     public double getBalance() {
@@ -33,5 +35,9 @@ public abstract class Conta implements ContaBase {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public TipoConta getTipoConta() {
+        return tipoConta;
     }
 }

@@ -1,11 +1,11 @@
 package com.example.demo.api.dto;
 
-import com.example.demo.domain.AccountType;
+import com.example.demo.domain.TipoConta;
 
 public class AberturaContaDto {
     private long agency;
     private String holderCPF;
-    private AccountType accountType;
+    private TipoConta tipoConta;
 
 
     public AberturaContaDto(long agency, String holderCPF) {
@@ -21,11 +21,11 @@ public class AberturaContaDto {
         return holderCPF;
     }
 
-    public AccountType getAccountType() {
-        return accountType;
+    public TipoConta getAccountType() {
+        return tipoConta;
     }
 
-    public void setAccountType(AccountType accountType) {
-        this.accountType = accountType;
+    public void setAccountType(TipoConta tipoConta) {
+        this.tipoConta = tipoConta;
     }
 }
