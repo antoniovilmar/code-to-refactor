@@ -1,9 +1,7 @@
 package com.example.demo.domain;
 
-import com.example.demo.domain.Conta;
-import com.example.demo.domain.Dependente;
-import com.example.demo.domain.DomainBusinessException;
-import com.example.demo.domain.TipoConta;
+import nl.jqno.equalsverifier.EqualsVerifier;
+import nl.jqno.equalsverifier.Warning;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -49,8 +47,8 @@ class ContaTest {
 
         assertThrows(
                 DomainBusinessException.class,
-                () -> conta.incluirDependente(new Dependente("1234", "51888888"))
-        );
+                () -> conta.incluirDependente("1234", "51888888"));
+
     }
 
     @Test
@@ -60,15 +58,24 @@ class ContaTest {
 
         assertThrows(
                 DomainBusinessException.class,
-                () -> conta.incluirDependente(new Dependente("1234", "51888888"))
-        );
+                () -> conta.incluirDependente("1234", "51888888"));
     }
 
     @Test
     @DisplayName("Deve incluir dependente para conta corrente")
     void deveInclusaoDependenteParaContaCorrente() {
         Conta conta = new Conta("99999999", TipoConta.CORRENTE, 123L, 1L);
-        conta.incluirDependente(new Dependente("1234", "51888888"));
+        conta.incluirDependente("1234", "51888888");
+    }
+
+    @Test
+    @DisplayName("Deve incluir dependente para conta corrente")
+    void deveRemoverDependenteParaContaCorrente() {
+        Conta conta = new Conta("99999999", TipoConta.CORRENTE, 123L, 1L);
+        conta.incluirDependente("1234", "51888888");
+        conta.removerDependente("1234");
+
+        Assertions.assertTrue(conta.getDependentes().isEmpty());
     }
 
     @Test
@@ -91,6 +98,13 @@ class ContaTest {
                 DomainBusinessException.class,
                 () -> conta.sacar(1)
         );
+    }
+
+    @Test
+    void deveTestarEqualsAndHashCode() {
+        EqualsVerifier.simple().forClass(Conta.class)
+                .suppress(Warning.SURROGATE_KEY)
+                .verify();
     }
 
 }

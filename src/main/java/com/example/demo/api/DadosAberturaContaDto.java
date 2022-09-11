@@ -1,10 +1,10 @@
 package com.example.demo.api;
 
-public class DadosAberturaConta {
+public class DadosAberturaContaDto {
     private long agencia;
     private String cpfTitular;
 
-    public DadosAberturaConta(long agencia, String cpfTitular) {
+    public DadosAberturaContaDto(long agencia, String cpfTitular) {
         this.agencia = agencia;
         this.cpfTitular = cpfTitular;
     }

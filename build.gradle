@@ -1,9 +1,9 @@
 plugins {
-	id 'org.springframework.boot' version '2.6.4'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-	id 'java'
+    id 'org.springframework.boot' version '2.6.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
     id "org.sonarqube" version "3.4.0.2513"
-	id 'jacoco'
+    id 'jacoco'
 }
 
 group = 'com.example'
@@ -11,7 +11,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
 
 tasks['test'].finalizedBy jacocoTestReport
@@ -19,38 +19,39 @@ tasks['jacocoTestReport'].dependsOn test
 tasks['sonarqube'].dependsOn jacocoTestReport
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:2.2.10.RELEASE'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'com.h2database:h2'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'com.h2database:h2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation('nl.jqno.equalsverifier:equalsverifier:3.10.1')
+
 }
 
 jacocoTestReport {
-	reports {
-		xml.enabled true
-		html.enabled true
-		csv.enabled false
-	}
+    reports {
+        xml.enabled true
+        html.enabled true
+        csv.enabled false
+    }
 }
 
 sonarqube {
-	properties {
-		property 'sonar.host.url', 'https://sonarcloud.io'
-		property "sonar.login", '58ba83bd5a57fb7ea449202ccff841896c05ce08'
-		property "sonar.projectKey", 'example-code-refactor'
-		property 'sonar.projectName', 'example-code-refactor'
-		property 'sonar.organization', 'example-poc'
-		property 'sonar.java.source', 11
-		property 'encoding', 'UTF-8'
-		property 'charSet', 'UTF-8'
-		property 'sonar.qualitygate.wait', true
-	}
+    properties {
+        property 'sonar.host.url', 'https://sonarcloud.io'
+        property "sonar.login", '58ba83bd5a57fb7ea449202ccff841896c05ce08'
+        property "sonar.projectKey", 'example-code-refactor'
+        property 'sonar.projectName', 'example-code-refactor'
+        property 'sonar.organization', 'example-poc'
+        property 'sonar.java.source', 11
+        property 'encoding', 'UTF-8'
+        property 'charSet', 'UTF-8'
+        property 'sonar.qualitygate.wait', true
+    }
 }
