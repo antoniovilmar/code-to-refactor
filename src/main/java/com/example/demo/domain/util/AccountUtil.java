@@ -1,6 +1,6 @@
 package com.example.demo.domain.util;
 
-import com.example.demo.domain.Conta;
+import com.example.demo.domain.conta.Conta;
 
 import java.util.Objects;
 

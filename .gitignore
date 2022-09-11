@@ -18,3 +18,4 @@ bin/
 build/
 out/
 target/
+.idea/

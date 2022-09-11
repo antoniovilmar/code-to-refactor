@@ -1,31 +1,20 @@
 package com.example.demo.api.dto;
 
-import com.example.demo.domain.TipoConta;
-
 public class AberturaContaDto {
-    private long agency;
-    private String holderCPF;
-    private TipoConta tipoConta;
+    private long agencia;
+    private String cpfTitular;
 
-
-    public AberturaContaDto(long agency, String holderCPF) {
-        this.agency = agency;
-        this.holderCPF = holderCPF;
+    public AberturaContaDto(long agencia, String cpfTitular) {
+        this.agencia = agencia;
+        this.cpfTitular = cpfTitular;
     }
 
-    public long getAgency() {
-        return agency;
+    public long getAgencia() {
+        return agencia;
     }
 
-    public String getHolderCPF() {
-        return holderCPF;
+    public String getCpfTitular() {
+        return cpfTitular;
     }
 
-    public TipoConta getAccountType() {
-        return tipoConta;
-    }
-
-    public void setAccountType(TipoConta tipoConta) {
-        this.tipoConta = tipoConta;
-    }
 }
