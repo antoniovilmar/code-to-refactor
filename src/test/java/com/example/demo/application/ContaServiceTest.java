@@ -1,21 +1,5 @@
 package com.example.demo.application;
 
-import com.example.demo.api.dto.AberturaContaDto;
-import com.example.demo.domain.TipoConta;
-import com.example.demo.domain.conta.ContaCorrente;
-import com.example.demo.infrastructure.ContaRepository;
-import com.example.demo.infrastructure.external.GeradorNumeroContaFachada;
-import com.example.demo.infrastructure.external.GeradorNumeroContaInvestimentoFachada;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.mockito.Mockito.*;
-
 
 class ContaServiceTest {
 //
