@@ -1,7 +1,5 @@
 package com.example.demo.domain.conta;
 
-import com.example.demo.infrastructure.repository.RestricaoRepository;
-
 public class ValidacaoAberturaContaCorrente {
 
   private RestricaoRepository restricaoRepository;

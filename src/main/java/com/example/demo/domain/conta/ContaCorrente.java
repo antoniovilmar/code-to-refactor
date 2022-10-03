@@ -7,17 +7,20 @@ import javax.persistence.Entity;
 @Entity
 public class ContaCorrente extends Conta {
 
-    private ContaCorrente() {
-        super();
-    }
+  private ContaCorrente() {
+    super();
+  }
+  private String cpfDependente;
 
-    public ContaCorrente(long number, long agency, String holderCPF) {
-        super(number, agency, holderCPF, TipoConta.CORRENTE);
-    }
+  public ContaCorrente(ValidacaoAberturaContaCorrente validacaoAberturaContaCorrente, long number,
+      long agencia, String cpf) {
+    super(number, agencia, cpf, TipoConta.CORRENTE);
+    validacaoAberturaContaCorrente.validar(cpf);
+  }
 
-    @Override
-    protected double getSaldoMinimoPermitido() {
-        return -1000;
-    }
+  @Override
+  protected double getSaldoMinimoPermitido() {
+    return -1000;
+  }
 
 }

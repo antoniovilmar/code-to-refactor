@@ -1,7 +1,8 @@
 package com.example.demo.domain.conta;
 
-public class DomainBusinessException extends Throwable {
+public class DomainBusinessException extends RuntimeException {
 
-  public DomainBusinessException(String s) {
+  public DomainBusinessException(String mensagem) {
+    super(mensagem);
   }
 }

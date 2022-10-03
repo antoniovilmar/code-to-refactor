@@ -11,8 +11,8 @@ public class ContaPoupanca extends Conta {
         super();
     }
 
-    public ContaPoupanca(long number, long agency, String holderCPF) {
-        super(number, agency, holderCPF, TipoConta.POUPANCA);
+    public ContaPoupanca(long numeroConta, long agencia, String cpf) {
+        super(numeroConta, agencia, cpf, TipoConta.POUPANCA);
     }
 
 }

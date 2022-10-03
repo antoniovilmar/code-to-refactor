@@ -9,8 +9,8 @@ public class ContaInvestimento extends Conta {
     private ContaInvestimento() {
         super();
     }
-    public ContaInvestimento(long number, long agency, String holderCPF) {
-        super(number, agency, holderCPF, TipoConta.INVESTIMENTO);
+    public ContaInvestimento(long numeroConta, long agencia, String cpf) {
+        super(numeroConta, agencia, cpf, TipoConta.INVESTIMENTO);
     }
 
 }
