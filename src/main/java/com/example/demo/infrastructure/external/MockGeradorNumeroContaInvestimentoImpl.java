@@ -3,7 +3,7 @@ package com.example.demo.infrastructure.external;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MockGeradorNumeroContaInvestimentoImpl implements GeradorNumeroContaInvestimentoFachada {
+public class MockGeradorNumeroContaInvestimentoImpl implements GeradorNumeroContaInvestimento {
     @Override
     public long gerar(String cpf) {
         {

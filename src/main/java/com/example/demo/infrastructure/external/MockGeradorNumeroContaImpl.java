@@ -4,7 +4,7 @@ import com.example.demo.domain.TipoConta;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MockGeradorNumeroContaImpl implements GeradorNumeroContaFachada {
+public class MockGeradorNumeroContaImpl implements GeradorNumeroConta {
 
     @Override
     public long gerar(TipoConta tipoConta) {
